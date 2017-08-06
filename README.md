@@ -39,6 +39,7 @@ npm install -g weexpack
 ### android 启动
 
 ```
+mkdir platforms
 weexpack platform add android
 weexpack run android
 ```
