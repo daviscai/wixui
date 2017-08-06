@@ -1,6 +1,7 @@
+
 {
-  "AppName": "Wix ui",
-  "AppId": "com.wxui.weex",
+  "AppName": "Wixui",
+  "AppId": "com.wixui.weex",
   "SplashText": "Wix ui",
   "WeexBundle": "http://192.168.199.138:8080/dist/weex/App.js"
 }
