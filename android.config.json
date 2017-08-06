@@ -1,6 +1,7 @@
 {
-  "AppName":"WeexApp",
-  "AppId":"com.alibaba.weex",
-  "SplashText":"Hello\nWeex",
-  "WeexBundle":"app.weex.js"
+  "AppName": "Wix ui",
+  "AppId": "com.wxui.weex",
+  "SplashText": "Wix ui",
+  "WeexBundle": "http://192.168.199.138:8080/dist/weex/App.js"
 }
+
