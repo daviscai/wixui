@@ -1,7 +1,7 @@
 /**
- * @author walid
+ * @author https://github.com/daviscai
  * @description vue router
- * @date 2016/03/16
+ * @date 2017/08/07
  */
 
 import Vue from 'vue'

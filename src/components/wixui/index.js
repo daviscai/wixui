@@ -1,8 +1,12 @@
-// import './styles/base.less'
+/**
+ * @author https://github.com/daviscai
+ * @date 2017/08/07
+ * @description 路由名字配置
+ */
+
 // import {retina} from './utils'
 import paper from './paper'
 
-// import config from './config'
 const components = {
   paper
 }
@@ -16,10 +20,8 @@ const install = function (Vue) {
 
 if (typeof window !== 'undefined' && window.Vue) install(window.Vue)
 export default {
-  // config,
   install
 }
 export {
-  // config,
   install
 }

@@ -1,55 +1,43 @@
 <template>
-  <div style="flex-direction: column;">
-    <osc-tabbar :tabItems="tabItems" @tabBarOnClick="tabBarOnClick"></osc-tabbar>
-  </div>
+<div>
+  <a class="button" :href="paperPath">
+    <text class="text">Paper</text>
+  </a>
+</div>
 </template>
 
 <script>
-  import route from 'router/page'
-  import navigator from 'utils/modules/navigator'
+import route from 'router/page'
+import ip from '../config'
 
-  export default {
-    data() {
-      return {
-        tabItems: [
-          {
-            index: 0,
-            title: '我的',
-            titleColor: '#000000',
-            icon: '',
-            image: 'http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png',
-            selectedImage: 'http://gtms02.alicdn.com/tps/i2/TB1qysbMpXXXXcnXXXX9t7RGVXX-46-46.png',
-            src: `${navigator.getBaseUrl()}${route.paper.jsPath}.js`,
-            visibility: 'hidden'
-          },
-          {
-            index: 1,
-            title: '动态',
-            titleColor: '#000000',
-            icon: '',
-            image: 'http://gtms01.alicdn.com/tps/i1/TB1qw.hMpXXXXagXXXX9t7RGVXX-46-46.png',
-            selectedImage: 'http://gtms04.alicdn.com/tps/i4/TB16jjPMpXXXXazXVXX9t7RGVXX-46-46.png',
-            src: `${navigator.getBaseUrl()}${route.home.jsPath}.js`,
-            visibility: 'visible'
-          },
-          {
-            index: 2,
-            title: '发起筹款',
-            titleColor: '#000000',
-            icon: '',
-            image: 'http://gtms03.alicdn.com/tps/i3/TB1LEn9MpXXXXaUXpXX9t7RGVXX-46-46.png',
-            selectedImage: 'http://gtms02.alicdn.com/tps/i2/TB1qysbMpXXXXcnXXXX9t7RGVXX-46-46.png',
-            src: `${navigator.getBaseUrl()}${route.launch.jsPath}.js`,
-            visibility: 'hidden'
-          }
-        ]
-      }
-    },
-
-    methods: {
-      tabBarOnClick (e) {
-        console.log('tabBarOnClick', e.index)
-      }
+export default {
+  data() {
+    return {
+      paperPath: ''
+    }
+  },
+  created: function () {
+    this.paperPath = this.getBaseUrl() + route.paper.jsPath + '.js'
+  },
+  methods: {
+    getBaseUrl () {
+      return 'http://192.168.199.138:8080/dist/weex/'
     }
   }
+}
+
 </script>
+
+<style scoped>
+.button{
+  margin-top: 50px;
+  margin-left:50px;
+  background-color:#eeeeee;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:20px;
+  padding-right:20px;
+  width:100px;
+  height:50px;
+}
+</style>

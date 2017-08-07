@@ -1,6 +1,6 @@
 /**
- * @author walid
- * @date 2016/03/20
+ * @author https://github.com/daviscai
+ * @date 2017/08/08
  * @description weex 打包配置
  */
 
@@ -16,30 +16,18 @@ const bannerPlugin = new webpack.BannerPlugin(
 
 function getEntryFileContent(entryPath, vueFilePath) {
   let relativePath = path.relative(path.join(entryPath, '../'), vueFilePath)
-  // relativePath = relativePath.replace(/\/ig/, '/')
+  relativePath = relativePath.replace(/\\/ig, '/')
   return `
 /**
- * @author walid
- * @date 2016/03/20
+ * @author https://github.com/daviscai
+ * @date 2017/08/07
  * @description 程序入口启动配置
  */
 
-const App = require("${relativePath}")
+const App = require('${relativePath}')
 
-
-// Vue.component('wix-paper', require("components/wixui/paper"))
-const Wixui = require("components/wixui")
-
-// import Wixui from './components/wixui'
+const Wixui = require('components/wixui')
 Vue.use(Wixui)
-
-// 全局注册组件
-Vue.component('osc-root', require("components/osc-root"))
-Vue.component('osc-navpage', require("components/osc-navpage"))
-Vue.component('osc-navbar', require("components/osc-navbar")) 
-Vue.component('osc-tabbar', require("components/osc-tabbar"))
-Vue.component('osc-list', require("components/osc-list"))
-Vue.component('osc-scroller', require("components/osc-scroller"))
 
 App.el = '#root'
 new Vue(App)
@@ -83,16 +71,10 @@ function getBaseConfig() {
       extensions: ['', '.js', '.vue'],
       fallback: [path.join(__dirname, './node_modules')],
       alias: {
-        'assets': path.resolve(__dirname, './src/assets/'),
         'components': path.resolve(__dirname, './src/components/'),
-        'constants': path.resolve(__dirname, './src/constants/'),
-        'api': path.resolve(__dirname, './src/api/'),
         'router': path.resolve(__dirname, './src/router/'),
-        'store': path.resolve(__dirname, './src/store/'),
         'views': path.resolve(__dirname, './src/views/'),
-        'mixins': path.resolve(__dirname, './src/mixins'),
-        'config': path.resolve(__dirname, './config'),
-        'utils': path.resolve(__dirname, './src/utils/')
+        'config': path.resolve(__dirname, './config')
       }
     },
     module: {

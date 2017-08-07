@@ -1,6 +1,6 @@
 /**
- * @author walid
- * @date 2017/03/02
+ * @author daviscai
+ * @date 2017/08/007
  * @description IndexUrl 配置到native
  */
 
@@ -11,8 +11,6 @@ const ip = require('ip').address()
 const yargs = require('yargs')
 const argv = yargs.argv
 
-console.log('argv._[0]', argv._[0])
-
 let ipIndexUrl = `http://${ip}:8080/dist/weex/App.js`
 let androidIndexUrl = argv._[0] === 'local' ? 'weex/App.js' : ipIndexUrl
 
@@ -22,9 +20,9 @@ let androidConfigFile = path.join(__dirname, '../android.config.json')
 let androidConfig =
   `
 {
-  "AppName": "WeexApp",
-  "AppId": "com.syswin.weex",
-  "SplashText": "HelloWeex",
+  "AppName": "Wixui",
+  "AppId": "com.wixui.weex",
+  "SplashText": "Wix ui",
   "WeexBundle": "${androidIndexUrl}"
 }
 
@@ -46,8 +44,6 @@ let iOSIpconfig =
 //  IpDefine.m
 //  WeexFrame
 //
-//  Created by walid on 2017/3/20.
-//  Copyright © 2017年 weex. All rights reserved.
 //  Ip 地址配置
 //
 

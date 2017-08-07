@@ -1,6 +1,6 @@
 {
   "name": "wixui",
-  "description": "a frame for weex ui ~",
+  "description": "weex ui components",
   "version": "0.1.0",
   "private": true,
   "main": "index.js",
