@@ -16,9 +16,14 @@
 关于 weexpack 可以看 doc/weex_dev.md
 
 ```
+npm run init  // 自动生成 android.config.json 配置文件
 weexpack platform add android
 weexpack run android
 ```
+
+在手机上安装成功后，以后修改代码，无需重新编译安装，在手机上退出App，重启就可以生效了
+
+注意：要确保手机能访问电脑的 http://192.168.23.6:8080/dist/weex/App.js  这个weex入口文件（同一网段），192.168.23.6 这个是电脑的本地ip
 
 ### iOS 启动
 

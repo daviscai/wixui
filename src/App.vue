@@ -1,7 +1,7 @@
 <template>
 <div>
   <a class="button" :href="paperPath">
-    <text class="text">Paper</text>
+    <text class="text">Paper Component</text>
   </a>
 </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     getBaseUrl () {
-      return 'http://192.168.199.138:8080/dist/weex/'
+      return `http://${ip}:8080/dist/weex/`
     }
   }
 }
@@ -37,7 +37,7 @@ export default {
   padding-bottom:10px;
   padding-left:20px;
   padding-right:20px;
-  width:100px;
+  width:300px;
   height:50px;
 }
 </style>

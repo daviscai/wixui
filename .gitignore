@@ -7,3 +7,5 @@ platforms/android
 plugins/*
 !plugins/README.md
 !plugins/fetch.json
+assets/config.js
+config.js
