@@ -18,6 +18,11 @@ export default [
     title: route.paper.title,
     path: route.paper.path,
     component: route.paper.component
+  },
+  {
+    title: route.icon.title,
+    path: route.icon.path,
+    component: route.icon.component
   }
 
 ]

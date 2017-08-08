@@ -10,5 +10,11 @@ export default {
     path: '/paper',
     jsPath: 'views/wixui/paper/app',
     component: require('views/wixui/paper/app')
+  },
+  icon: {
+    title: 'icon',
+    path: '/icon',
+    jsPath: 'views/wixui/icon/app',
+    component: require('views/wixui/icon/app')
   }
 }

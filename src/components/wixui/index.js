@@ -6,9 +6,11 @@
 
 // import {retina} from './utils'
 import paper from './paper'
+import icon from './icon'
 
 const components = {
-  paper
+  paper,
+  icon
 }
 
 const install = function (Vue) {

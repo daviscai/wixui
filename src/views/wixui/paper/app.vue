@@ -42,6 +42,7 @@ textColor：组件内字体颜色
 shadow： 组件阴影，数值有1，2，3，4 共4种阴影效果
 circle： 是否为圆形，true|false， 默认为false
 rounded: 是否为圆角，true|false， 默认为true，圆角固定为2px
+pin: 钉在哪里， bottom | right , positon=fixed 
 
 paper组件提供3个插槽，分别为左，中，右，每个插槽都可以插入多个组件
 
