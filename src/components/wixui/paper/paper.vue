@@ -69,26 +69,6 @@ export default {
       style.width = this.width
       style.color = this.textColor
       style.backgroundColor = this.bgColor  // background-color 类似这种名称要用驼峰式
-
-      /*
-      if (this.pin === 'bottom') {
-        if(this.height.indexOf('px') > -1 ){
-          let height = parseInt(this.height.replace(/px/, ''))
-          let top = this.getScreenHeight() - height
-          this.debugmsg = top
-          style.position = 'fixed'
-          style.bottom = '0px'
-          style.top = '0px'
-        }
-      }else if (this.pin === 'right') {
-        if(this.width.indexOf('px') > -1 ){
-          let width = parseInt(this.width.replace(/px/, ''))
-          let left = this.getScreenWidth() - width
-          style.position = 'absolute'
-          style.left = left + 'px'
-        }
-      }
-      */
       return style
     }
   },

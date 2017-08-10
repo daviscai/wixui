@@ -3,6 +3,11 @@
   <a class="button" :href="paperPath">
     <text class="text">Paper Component</text>
   </a>
+
+  <a class="button" :href="iconPath">
+    <text class="text">Icon Component</text>
+  </a>
+
 </div>
 </template>
 
@@ -13,11 +18,13 @@ import ip from '../config'
 export default {
   data() {
     return {
-      paperPath: ''
+      paperPath: '',
+      iconPath: ''
     }
   },
   created: function () {
     this.paperPath = this.getBaseUrl() + route.paper.jsPath + '.js'
+    this.iconPath  = this.getBaseUrl() + route.icon.jsPath + '.js'
   },
   methods: {
     getBaseUrl () {
