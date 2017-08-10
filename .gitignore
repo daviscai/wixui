@@ -1,7 +1,7 @@
 node_modules
 dist
 *log
-src/entry
+src/entry/*
 platforms/ios
 platforms/android
 plugins/*
@@ -9,3 +9,4 @@ plugins/*
 !plugins/fetch.json
 assets/config.js
 config.js
+.DS_Store

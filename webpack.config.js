@@ -2,17 +2,18 @@
  * @author https://github.com/daviscai
  * @date 2017/08/08
  * @description weex 打包配置
+ * webpack 1 upgrade to webpack 2  https://doc.webpack-china.org/guides/migrating/
  */
 
 const path = require('path')
 const webpack = require('webpack')
-const cssnext = require('postcss-cssnext')
+// const cssnext = require('postcss-cssnext')
 const fs = require('fs-extra')
 
-const bannerPlugin = new webpack.BannerPlugin(
-  '// { "framework": "Vue" }\n',
-  {raw: true}
-)
+var bannerPlugin = new webpack.BannerPlugin({
+  banner: '// { "framework": "Vue" }\n',
+  raw: true
+})
 
 function getEntryFileContent(entryPath, vueFilePath) {
   let relativePath = path.relative(path.join(entryPath, '../'), vueFilePath)
@@ -45,14 +46,19 @@ function walk(dir) {
       let fullpath = path.join(directory, file)
       let stat = fs.statSync(fullpath)
       let extname = path.extname(fullpath)
-      if (stat.isFile() && extname === '.vue') {
-        let entryFile = path.join(entryDirectory, dir, path.basename(file, extname) + '.js')
-        fs.outputFileSync(entryFile, getEntryFileContent(entryFile, fullpath))
-        // let name = path.join('build', dir, path.basename(file, extname))
-        let name = path.join(dir, path.basename(file, extname))
-        entry[name] = entryFile + '?entry=true'
-        // && file !== 'components'
-      } else if (stat.isDirectory()) {
+      if (stat.isFile()) {
+        let entryFile = ''
+        if (extname === '.vue') {
+          entryFile = path.join(entryDirectory, dir, path.basename(file, extname) + '.js')
+          fs.outputFileSync(entryFile, getEntryFileContent(entryFile, fullpath))
+          let name = path.join(dir, path.basename(file, extname))
+          entry[name] = entryFile + '?entry=true'
+        } else if (extname === '.woff' || extname === '.woff2' || extname === '.ttf') {
+          entryFile = path.join(directory, file )
+          let name = path.join(dir, path.basename(file, extname))
+          entry[name] = entryFile 
+        }
+      }else if (stat.isDirectory()) {
         let subdir = path.join(dir, file)
         walk(subdir)
       }
@@ -65,48 +71,55 @@ function getBaseConfig() {
   return {
     entry: entry,
     output: {
-      path: 'dist'
+      path: path.resolve(__dirname, 'dist')
     },
     resolve: {
-      extensions: ['', '.js', '.vue'],
-      fallback: [path.join(__dirname, './node_modules')],
+      extensions: ['.js', '.vue'],
+      modules: [
+        path.join(__dirname, "src"),
+        "node_modules"
+      ],
       alias: {
-        'components': path.resolve(__dirname, './src/components/'),
-        'router': path.resolve(__dirname, './src/router/'),
-        'views': path.resolve(__dirname, './src/views/'),
-        'config': path.resolve(__dirname, './config')
+        components: path.resolve(__dirname, './src/components/'),
+        router: path.resolve(__dirname, './src/router/'),
+        views: path.resolve(__dirname, './src/views/'),
+        config: path.resolve(__dirname, './config')
       }
     },
     module: {
-      preLoaders: [
+       rules: [
+        {
+          test: /\.vue(\?[^?]+)?$/,
+          loaders: []
+        },
         {
           test: /\.vue$/,
-          loader: 'eslint',
+          loader: 'eslint-loader',
+          enforce: "pre",
           exclude: /node_modules/
         },
         {
           test: /\.js$/,
-          loader: 'eslint',
+          loader: 'eslint-loader',
+          enforce: "pre",
           exclude: /node_modules/
-        }
-      ],
-      loaders: [
+        },
         {
           test: /\.js$/,
-          loader: 'babel',
+          loader: 'babel-loader',
           exclude: /node_modules/
-        }, {
-          test: /\.vue(\?[^?]+)?$/,
-          loaders: []
+        },
+        {
+          test: /\.(woff|woff2|ttf|)$/,
+          use: {
+            loader: 'url-loader',
+            query: {
+              limit: 50000,
+              name: './fonts/[name].[ext]'
+            }
+          }
         }
       ]
-    },
-    vue: {
-      postcss: [cssnext({
-        features: {
-          autoprefixer: false
-        }
-      })]
     },
     plugins: [bannerPlugin]
   }
@@ -117,13 +130,14 @@ webConfig.entry = {
   entry: path.resolve('./src/entry.js')
 }
 webConfig.output = {
-  path: 'dist/web',
+  path: path.resolve(__dirname, 'dist/web'),
   filename: '[name].js'
 }
-webConfig.module.loaders[1].loaders.push('vue')
+webConfig.module.rules[0].loaders.push('vue-loader')
 
 const weexConfig = getBaseConfig()
-weexConfig.output.filename = 'weex/[name].js'
-weexConfig.module.loaders[1].loaders.push('weex')
+weexConfig.output.path = path.resolve(__dirname, 'dist/weex'),
+weexConfig.output.filename = '[name].js'
+weexConfig.module.rules[0].loaders.push('weex-loader')
 
 module.exports = [webConfig, weexConfig]

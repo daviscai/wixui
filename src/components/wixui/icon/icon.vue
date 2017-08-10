@@ -71,12 +71,12 @@ export default {
     }
   },
   created () { 
-    let domModule = weex.requireModule('dom')
+    /*let domModule = weex.requireModule('dom')
     // 目前支持ttf、woff文件，不支持svg、eot类型,moreItem at http://www.iconfont.cn/
-    domModule.addRule('fontFace', {
-      'fontFamily': 'Material Icons', 
-      'src': 'url(./fonts/MaterialIcons-Regular.woff)'
-    })
+    domModule.addRule('fontFace', { 
+      'fontFamily': 'Material Icons',
+      'src': 'url("./fonts/MaterialIcons-Regular.woff")'
+    }) */
   },
   methods: {
     onclick (e) {
@@ -102,17 +102,40 @@ export default {
   background: none;
 }
 
-.wix-md{
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(./fonts/MaterialIcons-Regular.woff2) format('woff2');
+      /*
+      url(./fonts/MaterialIcons-Regular.woff2) format('woff2');
+       url(./fonts/MaterialIcons-Regular.woff) format('woff'),
+       url(./fonts/MaterialIcons-Regular.ttf) format('truetype');
+       ; */ 
+}
+
+.material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  letter-spacing: normal;
-  text-transform: none;
   display: inline-block;
-  white-space: nowrap;
+  text-transform: none;
+  letter-spacing: normal;
   word-wrap: normal;
+  white-space: nowrap;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+
+  /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 </style>

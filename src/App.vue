@@ -6,7 +6,7 @@
 
   <a class="button" :href="iconPath">
     <text class="text">Icon Component</text>
-  </a>
+  </a> 
 
 </div>
 </template>
