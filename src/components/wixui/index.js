@@ -7,10 +7,12 @@
 // import {retina} from './utils'
 import paper from './paper'
 import icon from './icon'
+import button from './button'
 
 const components = {
   paper,
-  icon
+  icon,
+  button
 }
 
 const install = function (Vue) {

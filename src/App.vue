@@ -8,6 +8,10 @@
     <text class="text">Icon Component</text>
   </a> 
 
+  <a class="button" :href="buttonPath">
+    <text class="text">Button Component</text>
+  </a> 
+
 </div>
 </template>
 
@@ -19,12 +23,14 @@ export default {
   data() {
     return {
       paperPath: '',
-      iconPath: ''
+      iconPath: '',
+      buttonPath: ''
     }
   },
   created: function () {
     this.paperPath = this.getBaseUrl() + route.paper.jsPath + '.js'
     this.iconPath  = this.getBaseUrl() + route.icon.jsPath + '.js'
+    this.buttonPath  = this.getBaseUrl() + route.button.jsPath + '.js'
   },
   methods: {
     getBaseUrl () {

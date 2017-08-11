@@ -11,3 +11,5 @@ plugins/*
 assets/config.js
 config.js
 .DS_Store
+android.config.json
+ios.config.json

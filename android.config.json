@@ -3,6 +3,6 @@
   "AppName": "Wixui",
   "AppId": "com.wixui.weex",
   "SplashText": "Wix ui",
-  "WeexBundle": "http://192.168.23.6:8080/dist/weex/App.js"
+  "WeexBundle": "http://192.168.199.138:8080/dist/weex/App.js"
 }
 

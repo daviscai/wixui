@@ -16,5 +16,11 @@ export default {
     path: '/icon',
     jsPath: 'views/wixui/icon/app',
     component: require('views/wixui/icon/app')
+  },
+  button: {
+    title: 'button',
+    path: '/button',
+    jsPath: 'views/wixui/button/app',
+    component: require('views/wixui/button/app')
   }
 }

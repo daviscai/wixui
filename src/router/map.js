@@ -23,6 +23,11 @@ export default [
     title: route.icon.title,
     path: route.icon.path,
     component: route.icon.component
+  },
+  {
+    title: route.button.title,
+    path: route.button.path,
+    component: route.button.component
   }
 
 ]

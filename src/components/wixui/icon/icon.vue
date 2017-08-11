@@ -76,7 +76,7 @@ export default {
     domModule.addRule('fontFace', { 
       'fontFamily': 'Material Icons',
       'src': 'url("./fonts/MaterialIcons-Regular.woff")'
-    }) */
+    })*/
   },
   methods: {
     onclick (e) {
