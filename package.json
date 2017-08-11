@@ -11,7 +11,9 @@
   "scripts": {
     "init": "node build/init.js",
     "dev": "webpack --watch",
-    "copy": "rm -rf android/app/src/main/assets/* && cp -vrf dist/weex/* android/app/src/main/assets/ && rm -rf ios/assets/* && cp -vrf dist/weex/* ios/assets/",
+    "copy:android": "rm -rf platforms/android/app/src/main/assets/* && cp -vrf dist/weex/* platforms/android/app/src/main/assets/",
+    "copy:ios": "rm -rf platforms/ios/assets/* && cp -vrf dist/weex/* platforms/ios/assets/",
+    "copy": "npm run copy:android && npm run copy:ios",
     "serve": "node build/ip.js && serve -p 8080",
     "build": "webpack",
     "debug": "weex-devtool"

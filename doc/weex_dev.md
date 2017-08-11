@@ -71,6 +71,10 @@ Downloading https://services.gradle.org/distributions/gradle-2.14.1-all.zip
 ```
 // 8bnwg5hd3w55iofp58khbp6yv 是随机目录，根据自己的目录来，系统会自动创建
 ~/.gradle/wrapper/dists/gradle-2.14.1-all/8bnwg5hd3w55iofp58khbp6yv/  
+
+win 10 , 一般在
+C:/Users/davis/.gradle
+
 ```
 重新执行 weexpack run android
 

@@ -4,6 +4,7 @@ dist
 src/entry/*
 platforms/ios
 platforms/android
+!platforms/android/build.gradle
 plugins/*
 !plugins/README.md
 !plugins/fetch.json
