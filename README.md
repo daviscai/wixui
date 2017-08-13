@@ -23,7 +23,7 @@ weexpack run android
 
 在手机上安装成功后，以后修改代码，无需重新编译安装，在手机上退出App，重启就可以生效了
 
-注意：要确保手机能访问电脑的 http://192.168.23.6:8080/dist/weex/App.js  这个weex入口文件（同一网段），192.168.23.6 这个是电脑的本地ip
+注意：要确保手机能访问电脑的 http://local_ip:8080/dist/index.weex.js  这个weex入口文件（同一网段才能访问，不同网段访问不了），local_ip本地电脑ip，在config.js里
 
 ### iOS 启动
 
@@ -33,4 +33,4 @@ weexpack run ios
 ```
 
 ### 感谢
-项目基础构建参考了 weex-vue-starter-kit 和 weex-frame ，特此感谢！
+项目基础构建参考了 weex-vue-starter-kit，weex-frame 和 weex-hackernews ，特此感谢！
