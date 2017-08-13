@@ -2,7 +2,7 @@
 <div>
 
   <div class="wix-icon" :class="iconClass" :style="iconStyle" :target="target"  @click="onclick" @longpress="onlongpress" @appear="onappear"  @disappear="ondisappear">
-    <text class="wix-md material-icons" :style="mdStyle" >{{icon}}</text>
+    <text class="wix-md material-icons" :style="mdStyle" >{{getFontName}}</text>
     <slot></slot>
   </div>
 
@@ -10,7 +10,10 @@
 </template>
 
 <script>
-
+//引入he模块，使用它解决weex-template-compiler在编译阶段进行decode
+import he from 'he'
+const ip = require('../../../../config').default
+const modal = weex.requireModule('modal')
 
 export default {
   name: 'wix-icon',
@@ -42,7 +45,10 @@ export default {
   },
   data () {
     return {
-      
+      iconItems:{
+        'close': '&#xE5CD;',
+        'icon-appreciate': '&#xe644;'
+      }
     }
   },
   computed: {
@@ -68,15 +74,33 @@ export default {
       style.fontSize = this.size
       if (this.color) style.color = this.color
       return style
+    },
+    //匹配对应的字体图标的unicode
+    getFontName: function() {
+      if(this.iconItems[this.icon]){
+        return he.decode(this.iconItems[this.icon])
+        // return this.iconItems[this.icon]
+      }else{
+        return this.icon
+      }
     }
   },
   created () { 
-    /*let domModule = weex.requireModule('dom')
-    // 目前支持ttf、woff文件，不支持svg、eot类型,moreItem at http://www.iconfont.cn/
-    domModule.addRule('fontFace', { 
+    //此url可以是指向本地字体图标文件路径 也可以直接用阿里巴巴字体图标库的的字体图标地址 ,比如'https://at.alicdn.com/t/font_3ppcziztn5wpcik9.ttf'
+    let bundleUrl = weex.config.bundleUrl
+    let url = bundleUrl.split('/').slice(0, -1).join('/')
+    url = url.replace('#', '')
+    url +=  '/fonts/MaterialIcons-Regular.ttf'
+
+    // url = 'http://'+ ip +':8080/dist/weex/fonts/MaterialIcons-Regular.ttf'
+    // url = 'https://at.alicdn.com/t/font_3ppcziztn5wpcik9.ttf'
+   
+
+    let domModule = weex.requireModule('dom')
+    domModule.addRule('fontFace', {
       'fontFamily': 'Material Icons',
-      'src': 'url("./fonts/MaterialIcons-Regular.woff")'
-    })*/
+      'src': 'url("' + url + '")'
+    })
   },
   methods: {
     onclick (e) {
@@ -100,20 +124,6 @@ export default {
 .wix-icon{ 
   align-items:center;
   background: none;
-}
-
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(./fonts/MaterialIcons-Regular.woff2) format('woff2');
-      /*
-      url(./fonts/MaterialIcons-Regular.woff2) format('woff2');
-       url(./fonts/MaterialIcons-Regular.woff) format('woff'),
-       url(./fonts/MaterialIcons-Regular.ttf) format('truetype');
-       ; */ 
 }
 
 .material-icons {

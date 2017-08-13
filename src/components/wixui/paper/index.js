@@ -4,4 +4,4 @@
  * @description 路由名字配置
  */
 
-export {default} from './paper'
+export {default} from './paper.vue'

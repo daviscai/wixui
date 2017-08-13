@@ -10,9 +10,13 @@ export default [
   {
     path: '/',
     redirect: {
-      // path: route.mine.path
-      path: route.paper.path
+      path: route.index.path
     }
+  },
+  {
+    title: route.index.title,
+    path: route.index.path,
+    component: route.index.component
   },
   {
     title: route.paper.title,

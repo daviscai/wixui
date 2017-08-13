@@ -1,56 +1,31 @@
 <template>
-<div>
-  <a class="button" :href="paperPath">
-    <text class="text">Paper Component</text>
-  </a>
-
-  <a class="button" :href="iconPath">
-    <text class="text">Icon Component</text>
-  </a> 
-
-  <a class="button" :href="buttonPath">
-    <text class="text">Button Component</text>
-  </a> 
-
-</div>
+  <div @androidback="back">
+    <text class="button" @click="back" >返回</text>
+    <router-view style="flex:1"></router-view>
+  </div>
+  
 </template>
 
 <script>
-import route from 'router/page'
-import ip from '../config'
-
-export default {
-  data() {
-    return {
-      paperPath: '',
-      iconPath: '',
-      buttonPath: ''
-    }
-  },
-  created: function () {
-    this.paperPath = this.getBaseUrl() + route.paper.jsPath + '.js'
-    this.iconPath  = this.getBaseUrl() + route.icon.jsPath + '.js'
-    this.buttonPath  = this.getBaseUrl() + route.button.jsPath + '.js'
-  },
-  methods: {
-    getBaseUrl () {
-      return `http://${ip}:8080/dist/weex/`
+  
+  export default {
+   
+    methods: {
+      back: function () {
+        this.$router.back()
+      }
     }
   }
-}
-
 </script>
 
 <style scoped>
 .button{
-  margin-top: 50px;
-  margin-left:50px;
+  margin-top: 10px;
   background-color:#eeeeee;
   padding-top:10px;
   padding-bottom:10px;
   padding-left:20px;
   padding-right:20px;
-  width:300px;
-  height:50px;
+ 
 }
 </style>

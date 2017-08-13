@@ -1,9 +1,9 @@
 <template>
 <div>
 
-    <wix-icon icon="grade" size="30px" ></wix-icon>
+    <wix-icon icon="close" size="30px" ></wix-icon>
 
-    <wix-icon icon="account_box" size="30px" color="#7b1fa2"></wix-icon>
+    <wix-icon icon="icon-appreciate" size="30px" color="#7b1fa2"></wix-icon>
 
     <wix-icon icon="autorenew" size="30px" color=""></wix-icon>
 

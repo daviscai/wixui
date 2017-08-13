@@ -19,6 +19,7 @@
     "debug": "weex-devtool"
   },
   "dependencies": {
+    "he": "^1.1.1",
     "vue": "^2.3.4",
     "vue-router": "^2.7.0",
     "weex-vue-render": "^0.11.56"
@@ -28,6 +29,7 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.18.0",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.2.0",
     "eslint-config-standard": "^10.2.1",

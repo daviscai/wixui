@@ -4,17 +4,15 @@
  * @description 程序入口启动配置
  */
 
-import App from './App.web.vue'
-import router from 'router'
+import App from './App.vue'
+import router from './router'
 
 import Wixui from './components/wixui'
-Vue.use(Wixui)
+Vue.use(Wixui) 
 
-new Vue({
-  el: '#root',
-  router,
-  template: '<App/>',
-  components: {
-    App
-  }
-})
+// create the app instance.
+// here we inject the router and store to all child components,
+// making them available everywhere as `this.$router`.
+new Vue(Vue.util.extend({ el: '#root', router }, App))
+
+router.push('/')

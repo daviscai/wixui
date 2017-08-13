@@ -11,8 +11,11 @@ const ip = require('ip').address()
 const yargs = require('yargs')
 const argv = yargs.argv
 
-let ipIndexUrl = `http://${ip}:8080/dist/weex/App.js`
-let androidIndexUrl = argv._[0] === 'local' ? 'weex/App.js' : ipIndexUrl
+// let ipIndexUrl = `http://${ip}:8080/dist/weex/App.js`
+// let androidIndexUrl = argv._[0] === 'local' ? 'weex/App.js' : ipIndexUrl
+
+let ipIndexUrl = `http://${ip}:8080/dist/index.weex.js`
+let androidIndexUrl = argv._[0] === 'local' ? 'index.weex.js' : ipIndexUrl
 
 // android 主机地址操作
 let androidConfigFile = path.join(__dirname, '../android.config.json')
@@ -35,6 +38,7 @@ fs.writeFile(androidConfigFile, androidConfig, function (err) {
 })
 
 // iOS 主机地址操作
+/*
 let iOSConfigFile = path.join(__dirname, '../platforms/ios/WeexFrame/IpDefine.h')
 let iosIndexDefine = argv._[0] === 'local' ? '[NSString stringWithFormat:@"file://%@/bundlejs/weex/App.js",[NSBundle mainBundle].bundlePath]' : `[NSString stringWithFormat:@"${ipIndexUrl}"]`
 
@@ -52,7 +56,7 @@ let iOSIpconfig =
 
 #define INDEX_URL ${iosIndexDefine}
 
-#endif /* IpDefine_h */
+#endif 
 `
 
 fs.writeFile(iOSConfigFile, iOSIpconfig, function (err) {
@@ -61,3 +65,4 @@ fs.writeFile(iOSConfigFile, iOSIpconfig, function (err) {
   }
   console.log('iOS写入INDEX_URL成功')
 })
+*/
