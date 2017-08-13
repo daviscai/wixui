@@ -7,7 +7,8 @@
 
 const path = require('path')
 const webpack = require('webpack')
-var copy = require('copy-webpack-plugin');
+const copy = require('copy-webpack-plugin')
+const utils = require('./build/utils')
 
 const bannerPlugin = new webpack.BannerPlugin({
   banner: '// { "framework": "Vue" }\n',
@@ -36,8 +37,20 @@ function getBaseConfig () {
         }, {
           test: /\.vue(\?[^?]+)?$/,
           loaders: []
+        },
+        {
+          test: /\.vue$/,
+          loader: 'eslint-loader',
+          enforce: "pre",
+          exclude: /node_modules/
+        },
+        {
+          test: /\.js$/,
+          loader: 'eslint-loader',
+          enforce: "pre",
+          exclude: /node_modules/
         }
-      ]
+      ].concat(utils.styleLoaders({extract: false})) 
     },
     plugins: [
       // new webpack.optimize.UglifyJsPlugin({compress: { warnings: false }}),

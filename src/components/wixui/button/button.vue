@@ -1,7 +1,14 @@
 <template>
+
 <div>
 
-<div class="wix-button"  :class="paperClass" :style="paperStyle">
+<a class="wix-button" :href="href" :target="target" :labelPosition="labelPosition" :disabled="disabled" 
+:class="buttonClass" :style="buttonStyle" :bgColor="bgColor" :color="color" :rippleColor="rippleColor" @click="onclick" @longpress="onlongpress" @appear="onappear"  @disappear="ondisappear"> 
+  <text  v-if="label && labelPosition === 'left'" >{{label}}</text> 
+  <icon :icon="icon"  :size="iconSize" ></icon>
+  <text  v-if="label && labelPosition === 'right'" >{{label}}</text> 
+</a>
+
   
 </div>
 
@@ -9,10 +16,15 @@
 </template>
 
 <script>
+import icon from '../icon'
+
 export default {
   name: 'wix-button',
+  components: {
+    icon
+  },
   props: {
-    debugmsg: '',
+
     circle: {
       type: Boolean,
       default: false // 高宽一样才是圆形，否则就是椭圆
@@ -33,62 +45,76 @@ export default {
       type: String,
       default: ''
     },
-    textColor: {
+    color: {
       type: String,
       default: ''
-    },
-    zindex: {
-      type: String,
-      default: '1'
     },
     shadow: { // 边框阴影, box-shadow仅仅支持iOS
       type: String,
       default: '0'
     },
-    pin: { // 钉在哪里，top | bottom | left | right
+    href: {
       type: String,
-      default: 'top'
+      default: ''
+    },
+    target: {
+      type: String
+    },
+    icon: {
+      type: String
+    },
+    iconSize: {
+      type: String
+    },
+    label: {
+      type: String
+    },
+    labelPosition: {
+      type: String,
+      default: 'right'
+    },
+    primary: {
+      type: Boolean,
+      default: false
+    },
+    secondary: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    rippleColor: {
+      type: String
     }
   },
   computed: {
-    paperClass () {
-      let arr = []
-      if (this.circle) arr.push('wix-paper-circle')
-      if (this.rounded) arr.push('wix-paper-round')
-      arr.push('wix-paper-' + this.zindex)
-      arr.push('wix-paper-shadow-' + this.shadow)
-      arr.push('wix-paper-pin-' + this.pin)
-      return arr
+    buttonStyle () {
+      return {
+        'background-color': this.backgroundColor,
+        'color': this.color
+      }
     },
-    paperStyle () {
-      let style = {}
-      style.height = this.height
-      style.width = this.width
-      style.color = this.textColor
-      style.backgroundColor = this.bgColor  // background-color 类似这种名称要用驼峰式
-      return style
+    buttonClass () {
+      return {
+        'wix-button-primary': this.primary,
+        'wix-button-secondary': this.secondary
+      }
     }
   },
   methods: {
-    getScreenHeight () {
-      let platform = weex.config.env.platform.toLowerCase()
-      if( platform === 'web' ) {
-        return document.documentElement.clientHeight
-      }else if( platform === 'android' ){
-        return 568
-      }else if ( platform === 'ios' ) {
-        return 568
-      }
+    onclick (e) {
+      this.$emit('click', e)
     },
-    getScreenWidth () {
-      let platform = weex.config.env.platform.toLowerCase()
-      if( platform === 'web' ) {
-        return document.documentElement.clientWidth
-      }else if( platform === 'android' ){
-        return 320
-      }else if ( platform === 'ios' ) {
-        return 320
-      }
+    onlongpress (e) {
+      this.$emit('longpress', e)
+    },
+    onappear (e) {
+      this.$emit('appear', e)
+    },
+    ondisappear (e) {
+      this.$emit('disappear', e)
     }
   }
 }
@@ -102,63 +128,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items:center;
-  background-color: #cccccc;
 }
-.wix-paper-left{
-  flex-direction: row;
-  margin-left: 20px;
-}
-.wix-paper-middle{
-  flex-direction: row;
-}
-.wix-paper-right{
-  flex-direction: row;
-  margin-right: 20px;
-}
-.wix-paper-round {
-  border-radius: 2px;
-}
-.wix-paper-circle {
-  border-radius: 50%;
-}
-.wix-paper-1 {
-  z-index: 1;
-}
-.wix-paper-2 {
-  z-index: 2;
-}
-.wix-paper-3 {
-  z-index: 3;
-}
-.wix-paper-4 {
-  z-index: 4;
-}
-.wix-paper-5 {
-  z-index: 5;
-}
-.wix-paper-shadow-1{
-  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
-}
-.wix-paper-shadow-2{
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.37);
-}
-.wix-paper-shadow-3{
-  box-shadow: 0px 14px 45px rgba(0, 0, 0, 0.45);
-}
-.wix-paper-shadow-4{
-  box-shadow: 0px 19px 60px rgba(0, 0, 0, 0.6);
-}
-.wix-paper-pin-top{
 
-}
-.wix-paper-pin-bottom{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.wix-paper-pin-right{
-  position: fixed;
-  right: 0;
-}
+
 </style>

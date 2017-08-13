@@ -7,7 +7,6 @@
   <div class="wix-paper-right"><slot name="right" ></slot> </div>
 </div>
 
-  <div><text>{{debugmsg}}</text></div>
 </div>
 </template>
 
@@ -15,7 +14,7 @@
 export default {
   name: 'wix-paper',
   props: {
-    debugmsg: '',
+
     circle: {
       type: Boolean,
       default: false // 高宽一样才是圆形，否则就是椭圆

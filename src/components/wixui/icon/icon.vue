@@ -12,13 +12,12 @@
 <script>
 //引入he模块，使用它解决weex-template-compiler在编译阶段进行decode
 import he from 'he'
-const ip = require('../../../../config').default
-const modal = weex.requireModule('modal')
 
+// 弹窗，类似 alert debug
+const modal = weex.requireModule('modal')
 export default {
   name: 'wix-icon',
   props: {
-    debugmsg: '',
     
     icon: {
       type: String
@@ -91,11 +90,6 @@ export default {
     let url = bundleUrl.split('/').slice(0, -1).join('/')
     url = url.replace('#', '')
     url +=  '/fonts/MaterialIcons-Regular.ttf'
-
-    // url = 'http://'+ ip +':8080/dist/weex/fonts/MaterialIcons-Regular.ttf'
-    // url = 'https://at.alicdn.com/t/font_3ppcziztn5wpcik9.ttf'
-   
-
     let domModule = weex.requireModule('dom')
     domModule.addRule('fontFace', {
       'fontFamily': 'Material Icons',

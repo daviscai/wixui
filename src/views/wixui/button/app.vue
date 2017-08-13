@@ -1,14 +1,18 @@
 <template>
 <div>
-    <wix-paper width="100%" height="100px" zindex="4" bgColor="#eeeeee" textColor="#000000" shadow="1" pin="bottom">
-      <div slot="left"><text>left</text></div>
-      <div slot="left"><text>left2</text></div>
-      <div slot="middle"><text>middle</text></div>
-      <div slot="middle"><text>middle2</text></div>
-      <div slot="right"><text>right</text></div>
-      <div slot="right"><text>right2</text></div>
-    </wix-paper>
+    
+<wix-button labelPosition="left"  label="点赞" icon="grade" iconSize="20px" bgColor="#eeeeee" color="#7b1fa2"></wix-button>
+
+<div class="line"></div>
+
+<wix-button labelPosition="right" label="点赞" icon="grade" iconSize="20px" bgColor="#eeeeee" color="#7b1fa2"></wix-button>
 
    
 </div>
 </template>
+
+<style scoped>
+.line {
+  margin-top: 10px;
+}
+</style>
