@@ -120,15 +120,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-.wix-button{
-  min-height:0px;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items:center;
-}
-
-
-</style>
+<style lang="less" src="./style.less" scoped ></style>

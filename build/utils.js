@@ -1,6 +1,6 @@
 var path = require('path')
 // var config = require('../config')
-// var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // exports.assetsPath = function (_path) {
 //   var assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -51,11 +51,11 @@ exports.cssLoaders = function (options) {
 
     css: generateLoaders(),
     //postcss: generateLoaders(),
-    less: generateLoaders('less', {       
-      globalVars: {
-        wixUiTheme: `'${themePath}'`
-      }
-    }),
+    // less: generateLoaders('less', {       
+    //   globalVars: {
+    //     wixUiTheme: `'${themePath}'`
+    //   }
+    // }),
     
     //sass: generateLoaders('sass', { indentedSyntax: true }),
     //scss: generateLoaders('sass'),

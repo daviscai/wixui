@@ -6,7 +6,6 @@
 
 // import {retina} from './utils'
 
-// import './style/base.less'
 import paper from './paper'
 import icon from './icon'
 import button from './button'

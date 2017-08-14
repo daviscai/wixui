@@ -7,9 +7,7 @@
 import App from './App.vue'
 import router from './router'
 
-import Wixui from './components/wixui' 
-
-// import './components/wixui/style/theme-carbon.less'
+import Wixui from './components/wixui'
 
 Vue.use(Wixui) 
 

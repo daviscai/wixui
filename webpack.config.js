@@ -10,9 +10,12 @@ const webpack = require('webpack')
 const copy = require('copy-webpack-plugin')
 const utils = require('./build/utils')
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const bannerPlugin = new webpack.BannerPlugin({
   banner: '// { "framework": "Vue" }\n',
-  raw: true
+  raw: true,
+  exclude: /.css/
 })
 
 //  文件拷贝插件,将图片和字体拷贝到dist目录
@@ -49,13 +52,31 @@ function getBaseConfig () {
           loader: 'eslint-loader',
           enforce: "pre",
           exclude: /node_modules/
+        },
+        {
+          test: /\.scss$/,
+          loader: ['sass-loader','css-loader']
+        },
+        {
+          test: /\.less$/,
+          // loader: 'less-loader',
+          use: ExtractTextPlugin.extract({
+            fallback: 'vue-style-loader',
+            use: ['less-loader','css-loader']
+          })
         }
-      ].concat(utils.styleLoaders({extract: false})) 
+      ] // .concat(utils.styleLoaders({extract: true})) 
     },
     plugins: [
       // new webpack.optimize.UglifyJsPlugin({compress: { warnings: false }}),
+      new ExtractTextPlugin({
+        filename: 'theme.css'
+        // filename: (getPath) => {
+        //   return getPath('src/components/style/[name].css').replace('src/components/style', 'css');
+        // }
+      }),
       bannerPlugin,
-      copyPlugin
+      copyPlugin,
     ]
   }
 }
