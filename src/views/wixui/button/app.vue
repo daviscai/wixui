@@ -1,7 +1,7 @@
 <template>
 <div>
     
-<wix-button labelPosition="left"  label="点赞" icon="grade" iconSize="20px" bgColor="#eeeeee" color="#7b1fa2"></wix-button>
+<wix-button labelPosition="left"  label="点赞" icon="grade" iconSize="20px" color="#7b1fa2"></wix-button>
 
 <div class="line"></div>
 

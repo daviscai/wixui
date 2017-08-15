@@ -53,13 +53,6 @@ export default {
   computed: {
     iconClass () {
       let arr = []
-      /*
-      if (this.circle) arr.push('wix-paper-circle')
-      if (this.rounded) arr.push('wix-paper-round')
-      arr.push('wix-paper-' + this.zindex)
-      arr.push('wix-paper-shadow-' + this.shadow)
-      arr.push('wix-paper-pin-' + this.pin)
-      */
       return arr
     },
     iconStyle () {
@@ -78,7 +71,6 @@ export default {
     getFontName: function() {
       if(this.iconItems[this.icon]){
         return he.decode(this.iconItems[this.icon])
-        // return this.iconItems[this.icon]
       }else{
         return this.icon
       }
@@ -113,33 +105,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-.wix-icon{ 
-  align-items:center;
-  background: none;
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-</style>
+<style lang="less" src="./style.less" scoped ></style>

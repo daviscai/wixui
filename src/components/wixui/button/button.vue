@@ -91,10 +91,12 @@ export default {
   },
   computed: {
     buttonStyle () {
-      return {
-        'background-color': this.backgroundColor,
-        'color': this.color
+      let style = {}
+      if(this.color) style.color = this.color
+      if(this.bgColor){
+        style.backgroundColor = this.bgColor  // background-color 类似这种名称要用驼峰式
       }
+      return style
     },
     buttonClass () {
       return {
@@ -119,5 +121,5 @@ export default {
   }
 }
 </script>
-
+ 
 <style lang="less" src="./style.less" scoped ></style>
