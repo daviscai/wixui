@@ -7,6 +7,8 @@
 
   <text class="button" @click="jumpButton">Button</text>
 
+  <text class="button" @click="jumpLayout">Layout</text>
+
 </div>
 </template>
 
@@ -32,6 +34,9 @@ export default {
     },
     jumpButton () {
       router.push(route.button.path) 
+    },
+    jumpLayout () {
+      router.push(route.layout.path) 
     }
   }
 }

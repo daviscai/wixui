@@ -29,5 +29,11 @@ export default {
     path: '/button',
     jsPath: 'views/wixui/button/app.js',
     component: require('../views/wixui/button/app.vue')
+  },
+  layout: {
+    title: 'layout',
+    path: '/layout',
+    jsPath: 'views/wixui/layout/app.js',
+    component: require('../views/wixui/layout/app.vue')
   }
 }

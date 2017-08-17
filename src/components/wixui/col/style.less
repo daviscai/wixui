@@ -1,0 +1,16 @@
+@import "../style/import.less";
+
+.wix-col {
+  
+}
+
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .wix-col-@{i} {
+    width: (@i * 750 / @n);
+  }
+  .wix-col-offset-@{i} {
+      margin-left: (@i * 750 / @n);
+  }
+  .generate-columns(@n, (@i + 1));
+}
+.generate-columns(24);

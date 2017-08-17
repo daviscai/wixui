@@ -9,11 +9,15 @@
 import paper from './paper'
 import icon from './icon'
 import button from './button'
+import row from './row'
+import col from './col'
 
 const components = {
   paper,
   icon,
-  button
+  button,
+  row,
+  col
 }
 
 const install = function (Vue) {

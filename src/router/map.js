@@ -32,6 +32,11 @@ export default [
     title: route.button.title,
     path: route.button.path,
     component: route.button.component
+  },
+  {
+    title: route.layout.title,
+    path: route.layout.path,
+    component: route.layout.component
   }
 
 ]
